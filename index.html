@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make HTML Page</title>
+</head>
+<body>
+   <h1>Make Your Page HTML</h1>
+   <br>
+   <form method="post">
+      <input type="text" name="page_name" placeholder="Name Page">
+      <br><br>
+      <input type="text" name="pass" placeholder="Password">
+      <br><br>
+      <input type="text" name="htmlc" placeholder="HTML Content">
+      <br><br>
+      <input type="submit" value="Create Page">
+   </form>
+   <br>
+   <h2>Create your password</h2>
+   <a href="generate.php"><button>Generate password/folder</button></a>
+   <br>
+   <br>
+   <a href="list.php"><button>your list</button></a>
+</body>
+</html>
+
+<?php
+
+if (isset($_POST['page_name']) && !empty($_POST['page_name'])) {
+    $pagen = $_POST['page_name'];
+    if (isset($_POST['pass']) && !empty($_POST['pass'])) {
+        $procs = $_POST['pass'];
+        if (isset($_POST['htmlc']) && !empty($_POST['htmlc'])) {
+            $htmlcode = $_POST['htmlc'];
+            file_put_contents("@/$procs/$pagen.html", $htmlcode);
+        } else {
+            echo "<p>HTML code: 0</p>";
+        }
+    } else {
+        echo "<p>Password: 0</p>";
+    }
+} else {
+    echo "<p>Page name: 0</p>";
+}
+?>
